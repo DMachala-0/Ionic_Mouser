@@ -1,0 +1,106 @@
+<ion-header [translucent]="false" color="medium">
+  <ion-toolbar>
+    <ion-title slot="start" >
+      Mouser part search tool
+    </ion-title>
+    <ion-buttons slot="end" (click)="openSettings()">
+      <ion-button>
+        <ion-icon slot="icon-only" name="cog-outline">
+        </ion-icon>
+      </ion-button>   
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+
+  <ion-item>
+    <ion-input  clearInput value="clear me" maxlength="128" [(ngModel)]="searchInput$">
+    </ion-input>
+    <ion-button (click)="postM()" class="ion-button_cust">
+      Search
+    </ion-button>
+  </ion-item>
+
+  <ion-list class="ion-no-padding" *ngIf="postMouserResult$ | async; let postMouserResult" color="medium" mode="ios">
+    
+    <ion-item lines="none" >
+      <!--<ion-label *ngIf="postMouserResult.SearchResults != null" position="stacked">Found:</ion-label>-->
+      <ion-label *ngIf="postMouserResult.SearchResults == null" position="stacked">
+        Found None
+      </ion-label>
+    </ion-item>
+
+    <ion-list class="ion-no-padding" *ngIf="postMouserResult.SearchResults !=null">
+      
+      <ion-item-group class="ion-no-padding"  *ngFor="let Item of postMouserResult.SearchResults.Parts ; let i = index">
+        <ion-item lines="none">
+          <ion-accordion-group expand="inset" multiple="false" lines="none" class="ion-no-padding" [animated]="false" >
+            
+            <ion-accordion value="first" class="ion-no-padding" detail='false' toggleIconSlot="start">
+                <ion-item-group slot="header"  >
+                  <ion-item class=" ion-accordion-resize" color="default">
+                      <ion-thumbnail slot="start" class="ion-no-padding">
+                        <img src="{{Item.ImagePath}}" alt=''>
+                      </ion-thumbnail>
+                      
+                      <ion-label *ngIf="Item!=null">
+                        {{Item.ManufacturerPartNumber}}
+                      </ion-label>
+                  </ion-item>
+                </ion-item-group>
+              <div slot="content" color="medium">
+                <ion-grid >
+                  <ion-col  class="ion-align-items-center">
+                    <div class="ion-padding" >
+                      <ion-label color="dark">
+                        {{Item.Category}}
+                      </ion-label>
+                    </div>
+
+                    <div class="ion-padding" >
+                      <ion-label class="ion-text-wrap" >
+                        {{Item.Description}}
+                      </ion-label>
+                    </div>
+
+                  </ion-col>
+                  <ion-row  class="ion-align-items-center">
+                    <div class="ion-padding"  >
+                      <ion-label >
+                        {{Item.Availability}}
+                      </ion-label>
+                    </div>
+
+                    <div class="ion-padding"  >
+                      <ion-label >
+                        <a  href="{{Item.DataSheetUrl}}">
+                          Datasheet
+                        </a>
+                      </ion-label>
+                    </div>
+                  </ion-row>
+                </ion-grid>
+                
+
+                <div class="ion-padding">
+                  <ion-list-header>
+                    <ion-label>Price breaks</ion-label>
+                  </ion-list-header>
+
+                  <ion-list *ngFor="let Price of Item.PriceBreaks ; let i = index" lines="none" >
+                    <ion-item>
+                      <ion-label >
+                        Price: {{Price.Price}} for {{Price.Quantity}} ks
+                      </ion-label>
+                    </ion-item>
+                  </ion-list>
+                </div>
+              </div>
+            </ion-accordion>
+          </ion-accordion-group>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+  </ion-list>
+</ion-content>
