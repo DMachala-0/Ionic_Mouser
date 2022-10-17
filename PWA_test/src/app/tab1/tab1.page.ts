@@ -32,14 +32,15 @@ export class Tab1Page {
   postM()
   {
     postMouserInput.SearchByKeywordRequest.keyword = this.searchInput$ ?? '';//this.todo.value;
-    postMouserInput.SearchByKeywordRequest.records = 5;
     postMouserInput.SearchByKeywordRequest.startingRecord = 0;
     this.postMouserResult$ =  this.apiService.postKeywordMouser();
+
+    console.log(this.postMouserResult$)
+
   }
 
   openSettings()
   {
-    console.log("settings clicked")
     this.openModal();
   }
 

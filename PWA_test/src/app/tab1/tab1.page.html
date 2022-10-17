@@ -52,8 +52,8 @@
               <div slot="content" color="medium">
                 <ion-grid >
                   <ion-col  class="ion-align-items-center">
-                    <div class="ion-padding" >
-                      <ion-label color="dark">
+                    <div class="ion-padding " >
+                      <ion-label color="dark ion-text-wrap">
                         {{Item.Category}}
                       </ion-label>
                     </div>
@@ -66,24 +66,37 @@
 
                   </ion-col>
                   <ion-row  class="ion-align-items-center">
-                    <div class="ion-padding"  >
-                      <ion-label >
+                    <div class="ion-padding">
+                      <ion-label class="ion-text-wrap">
                         {{Item.Availability}}
                       </ion-label>
                     </div>
 
                     <div class="ion-padding"  >
-                      <ion-label >
-                        <a  href="{{Item.DataSheetUrl}}">
-                          Datasheet
-                        </a>
+                        <ion-tab-button href="{{Item.DataSheetUrl}}">
+                          <ion-icon name="document-outline"></ion-icon>
+                          <ion-label>Datasheet</ion-label>
+                        </ion-tab-button>
+                    </div>
+
+                    <div>
+                      <ion-tab-button href="{{Item.ProductDetailUrl}}">
+                        <ion-icon name="globe"></ion-icon>
+                        <ion-label>Product page</ion-label>
+                      </ion-tab-button>
+                    </div>
+
+                  </ion-row>
+                  <ion-col>
+                    <div class="ion-padding">
+                      <ion-label class=" ion-text-wrap">
+                        {{Item.RestrictionMessage}}
                       </ion-label>
                     </div>
-                  </ion-row>
+                  </ion-col>
                 </ion-grid>
-                
 
-                <div class="ion-padding">
+                <div class="ion-padding" >
                   <ion-list-header>
                     <ion-label>Price breaks</ion-label>
                   </ion-list-header>
