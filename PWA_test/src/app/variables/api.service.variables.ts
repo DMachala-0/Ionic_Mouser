@@ -1,6 +1,6 @@
-export var recordDefault = 2;
+export let recordDefault = 50;
 
-export var postMouserInput =
+export let postMouserInput =
 {
     "SearchByKeywordRequest":
     {

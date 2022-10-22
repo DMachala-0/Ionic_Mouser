@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Observable } from 'rxjs';
+import { identity, Observable } from 'rxjs';
 import { SettingsPage } from '../pages/settings/settings.page';
 import { ApiService } from '../services/api.service';
 import { postMouserResult } from '../configs/api.service.config';
@@ -14,7 +14,7 @@ import { postMouserInput } from '../variables/api.service.variables';
 })
 export class Tab1Page {
 
-  postMouserResult$: Observable<postMouserResult>;
+  postMouserResult$: Observable<typeof postMouserResult>;
   searchInput$: string;
 
   
@@ -29,15 +29,13 @@ export class Tab1Page {
   {
     console.log(this.searchInput$);
   }
-  postM()
+  async postM()
   {
     postMouserInput.SearchByKeywordRequest.keyword = this.searchInput$ ?? '';//this.todo.value;
     postMouserInput.SearchByKeywordRequest.startingRecord = 0;
-    this.postMouserResult$ =  this.apiService.postKeywordMouser();
-
-    console.log(this.postMouserResult$)
-
+    this.postMouserResult$ = await this.apiService.postKeywordMouser();
   }
+
 
   openSettings()
   {

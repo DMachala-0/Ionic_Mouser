@@ -1,4 +1,4 @@
-export interface postMouserResult
+export let postMouserResult =
 {
     "Errors": [
       {

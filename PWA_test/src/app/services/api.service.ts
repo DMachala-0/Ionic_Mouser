@@ -15,7 +15,7 @@ export class ApiService {
   constructor(private http: HttpClient) { 
   }
 
-  postKeywordMouser() : Observable<postMouserResult>
+  postKeywordMouser() : Observable<typeof postMouserResult>
   {
     const url = environment.api.baseUrl +
                 environment.api.apiUrl +
@@ -24,6 +24,6 @@ export class ApiService {
                 environment.api.keyUrl +
                 environment.api.key;
                 
-    return this.http.post<postMouserResult>(url,postMouserInput);
+    return this.http.post<typeof postMouserResult>(url,postMouserInput);
   }
 }

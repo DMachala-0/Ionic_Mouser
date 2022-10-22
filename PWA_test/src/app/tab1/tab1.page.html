@@ -41,7 +41,8 @@
                 <ion-item-group slot="header"  >
                   <ion-item class=" ion-accordion-resize" color="default">
                       <ion-thumbnail slot="start" class="ion-no-padding">
-                        <img src="{{Item.ImagePath}}" alt=''>
+                        <img *ngIf="Item.ImagePath != null"  src="{{Item.ImagePath}}" alt=''>
+                        <img *ngIf="Item.ImagePath == null"  src="assets/img/no-image.webp" alt=''>
                       </ion-thumbnail>
                       
                       <ion-label *ngIf="Item!=null">
@@ -87,7 +88,8 @@
                     </div>
 
                   </ion-row>
-                  <ion-col>
+
+                  <ion-col *ngIf="Item.RestrictionMessage != null ">
                     <div class="ion-padding">
                       <ion-label class=" ion-text-wrap">
                         {{Item.RestrictionMessage}}
@@ -96,8 +98,8 @@
                   </ion-col>
                 </ion-grid>
 
-                <div class="ion-padding" >
-                  <ion-list-header>
+                <div class="ion-padding" *ngIf="Item.PriceBreaks.length > 0 ">
+                  <ion-list-header >
                     <ion-label>Price breaks</ion-label>
                   </ion-list-header>
 
