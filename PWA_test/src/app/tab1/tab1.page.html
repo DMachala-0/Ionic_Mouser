@@ -45,7 +45,7 @@
                         <img *ngIf="Item.ImagePath == null"  src="assets/img/no-image.webp" alt=''>
                       </ion-thumbnail>
                       
-                      <ion-label *ngIf="Item!=null">
+                      <ion-label *ngIf="Item!=null" class="ion-text-wrap">
                         {{Item.ManufacturerPartNumber}}
                       </ion-label>
                   </ion-item>
@@ -66,26 +66,27 @@
                     </div>
 
                   </ion-col>
-                  <ion-row  class="ion-align-items-center">
+                  <ion-row *ngIf="Item.ProductDetailUrl != ''"  class="ion-align-items-center">
                     <div class="ion-padding">
                       <ion-label class="ion-text-wrap">
                         {{Item.Availability}}
                       </ion-label>
                     </div>
 
-                    <div class="ion-padding"  >
+                    <div *ngIf="Item.ProductDetailUrl != ''">
+                      <ion-tab-button href="{{Item.ProductDetailUrl}}">
+                        <ion-icon name="globe"></ion-icon>
+                        <ion-label>Product page</ion-label>
+                      </ion-tab-button>
+                    </div>
+
+                    <div *ngIf="Item.DataSheetUrl != ''" class="ion-padding">
                         <ion-tab-button href="{{Item.DataSheetUrl}}">
                           <ion-icon name="document-outline"></ion-icon>
                           <ion-label>Datasheet</ion-label>
                         </ion-tab-button>
                     </div>
 
-                    <div>
-                      <ion-tab-button href="{{Item.ProductDetailUrl}}">
-                        <ion-icon name="globe"></ion-icon>
-                        <ion-label>Product page</ion-label>
-                      </ion-tab-button>
-                    </div>
 
                   </ion-row>
 
