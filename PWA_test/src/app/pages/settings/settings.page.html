@@ -8,24 +8,54 @@
 </ion-header>
 
 <ion-content>
-<ion-list>
-  <ion-item-group>
+  <ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>
+            Starting diplayed item :
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input slot="end" id="changeStartItem" type="number" [(ngModel)]="changeStartItemValue" placeholder="Number of displayed items" min="1" max="50" (ionChange)="changeStartItem(changeStartItemValue)">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
 
-    <ion-item>
-      <ion-label slot="start">
-        Displayed items:
-      </ion-label>
-      <ion-input type="number" [(ngModel)]="value" placeholder="Number of displayed items" min="1" max="50" (click)="changeSearchCount(value)">
-      </ion-input>
-    </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-label>
+            Displayed items:
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input slot="end" id="changeSearchCount" type="number" [(ngModel)]="changeSearchCountValue"  placeholder="Number of displayed items" min="1" max="50" (ionChange)="changeSearchCount(changeSearchCountValue)">
+            </ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
 
-    <ion-item>
-      <ion-label>
-        Label
-      </ion-label>
-    </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-label>
+            Search options:
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-select class="textColor"  placeholder="{{searchOptions[indexOfSelectOption]}}" slot="end" interface="popover" [(ngModel)]="selectOption"  (ionChange)="changeSelectOptions(selectOption)">
+              <ion-select-option slot="start" value="{{i}}"  *ngFor="let val of searchOptions ; let i = index">
+                {{val}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
 
-  </ion-item-group>
-</ion-list>
 
+    </ion-grid>
+  </ion-list>
 </ion-content>

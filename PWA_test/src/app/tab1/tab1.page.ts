@@ -32,7 +32,6 @@ export class Tab1Page {
   async postM()
   {
     postMouserInput.SearchByKeywordRequest.keyword = this.searchInput$ ?? '';//this.todo.value;
-    postMouserInput.SearchByKeywordRequest.startingRecord = 0;
     this.postMouserResult$ = await this.apiService.postKeywordMouser();
   }
 

@@ -1,5 +1,7 @@
 export let recordDefault = 50;
 
+export let searchOptions: string[] = ["None","Rohs","InStock","RohsAndInStock"];
+
 export let postMouserInput =
 {
     "SearchByKeywordRequest":
@@ -7,7 +9,7 @@ export let postMouserInput =
         "keyword": "string",
         "records": recordDefault,
         "startingRecord": 0,
-        "searchOptions": "string",
+        "searchOptions": "None",
         "searchWithYourSignUpLanguage": "string"
     }
 };
