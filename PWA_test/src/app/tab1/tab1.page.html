@@ -5,8 +5,7 @@
     </ion-title>
     <ion-buttons slot="end" (click)="openSettings()">
       <ion-button>
-        <ion-icon slot="icon-only" name="cog-outline">
-        </ion-icon>
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
       </ion-button>   
     </ion-buttons>
   </ion-toolbar>
@@ -27,7 +26,10 @@
     <ion-item lines="none" >
       <!--<ion-label *ngIf="postMouserResult.SearchResults != null" position="stacked">Found:</ion-label>-->
       <ion-label *ngIf="postMouserResult.SearchResults == null" position="stacked">
-        Found None
+        Please insert name of part to seach
+      </ion-label>
+      <ion-label *ngIf="postMouserResult.SearchResults.Parts.length == 0" position="stacked">
+        Found none
       </ion-label>
     </ion-item>
 
