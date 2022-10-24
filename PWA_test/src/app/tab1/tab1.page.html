@@ -68,14 +68,21 @@
                     </div>
 
                   </ion-col>
-                  <ion-row *ngIf="Item.ProductDetailUrl != ''"  class="ion-align-items-center">
+                  <ion-row  class="ion-align-items-center">
                     <div class="ion-padding">
                       <ion-label class="ion-text-wrap">
                         {{Item.Availability}}
                       </ion-label>
                     </div>
 
-                    <div *ngIf="Item.ProductDetailUrl != ''">
+                    <div class="ion-padding">
+                      <ion-tab-button (click)="openInfoPage()">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <ion-label>Detailed Part Info</ion-label>
+                      </ion-tab-button>
+                    </div>
+
+                    <div *ngIf="Item.ProductDetailUrl != ''" class="ion-padding">
                       <ion-tab-button href="{{Item.ProductDetailUrl}}">
                         <ion-icon name="globe"></ion-icon>
                         <ion-label>Product page</ion-label>

@@ -16,7 +16,6 @@ export class Tab1Page {
 
   postMouserResult$: Observable<typeof postMouserResult>;
   searchInput$: string;
-
   
   constructor(
     private apiService: ApiService,
@@ -39,6 +38,10 @@ export class Tab1Page {
   openSettings()
   {
     this.openModal();
+  }
+
+  openInfoTab()
+  {
   }
 
   async openModal()

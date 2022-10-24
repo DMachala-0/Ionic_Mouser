@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },  {
+    path: 'partinfo',
+    loadChildren: () => import('./pages/partinfo/partinfo.module').then( m => m.PartinfoPageModule)
   }
+
 ];
 @NgModule({
   imports: [
