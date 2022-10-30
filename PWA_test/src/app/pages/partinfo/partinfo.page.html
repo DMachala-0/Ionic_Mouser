@@ -1,9 +1,149 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>partinfo</ion-title>
+    //+ img
+    <ion-title align="center" >{{itemDetail.ManufacturerPartNumber}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-col>
+      
+      <ion-row class="ion-padding">
+        <ion-label>
+          Description: {{itemDetail.Description}}
+        </ion-label>
+      </ion-row>
+
+      <ion-row class="ion-padding">
+        <ion-label>
+          Category: {{itemDetail.Category}}
+        </ion-label>
+      </ion-row>
+
+      <ion-row class="ion-padding">
+        <ion-label>
+          Manufacturer Name: {{itemDetail.Manufacturer}}
+        </ion-label>
+      </ion-row>
+
+      <ion-row class="ion-padding">
+        <ion-label>
+          Manufacturer part number: {{itemDetail.ManufacturerPartNumber}}
+        </ion-label>
+      </ion-row>
+    
+      <ion-row class="ion-padding">
+        <ion-label>
+          Mouser part number: {{itemDetail.MouserPartNumber}}
+        </ion-label>
+      </ion-row>
+
+      <ion-row class="ion-padding">
+        <ion-grid>
+          <ion-row>
+            <ion-label>
+              Availability: {{itemDetail.Availability}}
+            </ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-label>
+              Lead time: {{itemDetail.LeadTime}}
+            </ion-label>
+          </ion-row>
+        </ion-grid>
+      </ion-row>
+
+      <ion-row class="ion-padding">
+        <ion-label>
+          Avaiable in order: {{itemDetail.AvailableOnOrder}}
+        </ion-label>
+      </ion-row>
+
+      <ion-row class="ion-padding">
+        <ion-label>
+          Max order quantity: {{itemDetail.SalesMaximumOrderQty}}
+        </ion-label>
+      </ion-row>
+
+      <ion-row class="ion-padding">
+        <ion-grid>
+          <ion-row>
+            <ion-label>
+              IPCCode: {{itemDetail.IPCCode}}
+            </ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-label>
+              SField: {{itemDetail.SField}}
+            </ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-label>
+              VNum: {{itemDetail.VNum}}
+            </ion-label>
+          </ion-row>
+        </ion-grid>
+      </ion-row>
+      
+    </ion-col>
+
+    <ion-col>
+      <ion-row>
+        
+        <div *ngIf="itemDetail.ProductDetailUrl != ''" class="ion-padding">
+          <ion-tab-button href="{{itemDetail.ProductDetailUrl}}">
+            <ion-icon name="globe"></ion-icon>
+            <ion-label>Product page</ion-label>
+          </ion-tab-button>
+        </div>
+
+        <div *ngIf="itemDetail.DataSheetUrl != ''" class="ion-padding">
+            <ion-tab-button href="{{itemDetail.DataSheetUrl}}">
+              <ion-icon name="document-outline"></ion-icon>
+              <ion-label>Datasheet</ion-label>
+            </ion-tab-button>
+        </div>
+      </ion-row>
+    </ion-col>
+
+    <ion-col>
+      <div class="ion-padding" *ngIf="itemDetail.PriceBreaks.length > 0 ">
+        <ion-list-header >
+          <ion-label>Price breaks</ion-label>
+        </ion-list-header>
+
+        <ion-list *ngFor="let Price of itemDetail.PriceBreaks ; let i = index" lines="none" >
+          <ion-item>
+            <ion-label >
+              Price: {{Price.Price}} for {{Price.Quantity}} ks
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-col>
+
+  </ion-grid>
+<!--
+// category
+// description
+// manufacturer name
+// part number
+// mouser part number
+
+
+
+// avaiable, lead time, 
+//avaiable on order
+// max order quantity
+
+//IPCCode": "string",
+//  "SField": "string",
+//  "VNum":
+
+// pageurl , datasheet
+// prices
+
+-->
 
 </ion-content>

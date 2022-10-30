@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { postMouserInput, searchOptions } from 'src/app/variables/api.service.variables';
+import { PartinfoPage } from '../partinfo/partinfo.page';
 
 @Component({
   selector: 'app-settings',
@@ -16,6 +17,8 @@ export class SettingsPage implements OnInit {
   searchOptions = searchOptions;
   selectOption: number;
   indexOfSelectOption = 0;
+
+  component = PartinfoPage;
 
   constructor(
     private modalCtrl: ModalController,

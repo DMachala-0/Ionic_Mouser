@@ -1,1 +1,2 @@
-export let tabInfoShow = false;
+export let tabInfoShow = true;
+export let testnumber = 99;

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PartDetail } from 'src/app/configs/api.service.config';
+
 
 @Component({
   selector: 'app-partinfo',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./partinfo.page.scss'],
 })
 export class PartinfoPage implements OnInit {
-
-  constructor() { }
+    itemDetail: PartDetail["Part"];
+  constructor(private partDetail: PartDetail) { }
 
   ngOnInit() {
+    this.itemDetail = this.partDetail.Part;
+    console.log(this.itemDetail);
   }
 
 }
