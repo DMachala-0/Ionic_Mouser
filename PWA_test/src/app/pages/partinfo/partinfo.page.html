@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    //+ img
+    <ion-thumbnail slot="start" class="ion-no-padding">
+      <img *ngIf="itemDetail.ImagePath != null"  src="{{itemDetail.ImagePath}}" alt=''>
+      <img *ngIf="itemDetail.ImagePath == null"  src="assets/img/no-image.webp" alt=''>
+    </ion-thumbnail>
     <ion-title align="center" >{{itemDetail.ManufacturerPartNumber}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -85,7 +88,7 @@
           </ion-row>
         </ion-grid>
       </ion-row>
-      
+
     </ion-col>
 
     <ion-col>
