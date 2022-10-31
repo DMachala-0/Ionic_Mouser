@@ -1,10 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-thumbnail slot="start" class="ion-no-padding">
-      <img *ngIf="itemDetail.ImagePath != null"  src="{{itemDetail.ImagePath}}" alt=''>
-      <img *ngIf="itemDetail.ImagePath == null"  src="assets/img/no-image.webp" alt=''>
-    </ion-thumbnail>
-    <ion-title align="center" >{{itemDetail.ManufacturerPartNumber}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+          [text]="buttonText"
+          [icon]="buttonIcon">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-item-group>
+        <ion-item lines="none" >
+          <ion-thumbnail >
+            <img *ngIf="itemDetail.ImagePath != null"  src="{{itemDetail.ImagePath}}" alt=''>
+            <img *ngIf="itemDetail.ImagePath == null"  src="assets/img/no-image.webp" alt=''>
+          </ion-thumbnail>
+          <ion-label class="ion-padding">
+            {{itemDetail.ManufacturerPartNumber}}
+          </ion-label>
+        </ion-item>
+      </ion-item-group>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -49,41 +63,9 @@
               Availability: {{itemDetail.Availability}}
             </ion-label>
           </ion-row>
-          <ion-row>
+          <ion-row >
             <ion-label>
               Lead time: {{itemDetail.LeadTime}}
-            </ion-label>
-          </ion-row>
-        </ion-grid>
-      </ion-row>
-
-      <ion-row class="ion-padding">
-        <ion-label>
-          Avaiable in order: {{itemDetail.AvailableOnOrder}}
-        </ion-label>
-      </ion-row>
-
-      <ion-row class="ion-padding">
-        <ion-label>
-          Max order quantity: {{itemDetail.SalesMaximumOrderQty}}
-        </ion-label>
-      </ion-row>
-
-      <ion-row class="ion-padding">
-        <ion-grid>
-          <ion-row>
-            <ion-label>
-              IPCCode: {{itemDetail.IPCCode}}
-            </ion-label>
-          </ion-row>
-          <ion-row>
-            <ion-label>
-              SField: {{itemDetail.SField}}
-            </ion-label>
-          </ion-row>
-          <ion-row>
-            <ion-label>
-              VNum: {{itemDetail.VNum}}
             </ion-label>
           </ion-row>
         </ion-grid>
@@ -97,23 +79,29 @@
         <div *ngIf="itemDetail.ProductDetailUrl != ''" class="ion-padding">
           <ion-tab-button href="{{itemDetail.ProductDetailUrl}}">
             <ion-icon name="globe"></ion-icon>
-            <ion-label>Product page</ion-label>
+            <ion-label>
+              Product page
+            </ion-label>
           </ion-tab-button>
         </div>
 
         <div *ngIf="itemDetail.DataSheetUrl != ''" class="ion-padding">
             <ion-tab-button href="{{itemDetail.DataSheetUrl}}">
               <ion-icon name="document-outline"></ion-icon>
-              <ion-label>Datasheet</ion-label>
+              <ion-label>
+                Datasheet
+              </ion-label>
             </ion-tab-button>
         </div>
       </ion-row>
     </ion-col>
 
     <ion-col>
-      <div class="ion-padding" *ngIf="itemDetail.PriceBreaks.length > 0 ">
+      <div class="ion-padding" *ngIf="itemDetail.PriceBreaks.length > 0">
         <ion-list-header >
-          <ion-label>Price breaks</ion-label>
+          <ion-label>
+            Price breaks
+          </ion-label>
         </ion-list-header>
 
         <ion-list *ngFor="let Price of itemDetail.PriceBreaks ; let i = index" lines="none" >

@@ -92,41 +92,41 @@ export interface postMouserResult
 export class PartDetail{
   public Part =
   {
-  "Availability": "string",
-  "DataSheetUrl": "string",
-  "Description": "string",
-  "FactoryStock": "string",
-  "ImagePath": "string",
-  "Category": "string",
-  "LeadTime": "string",
-  "LifecycleStatus": "string",
-  "Manufacturer": "string",
-  "ManufacturerPartNumber": "string",
-  "Min": "string",
-  "Mult": "string",
-  "MouserPartNumber": "string",
+  "Availability": "N/A",
+  "DataSheetUrl": "N/A",
+  "Description": "N/A",
+  "FactoryStock": "N/A",
+  "ImagePath": "N/A",
+  "Category": "N/A",
+  "LeadTime": "N/A",
+  "LifecycleStatus": "N/A",
+  "Manufacturer": "N/A",
+  "ManufacturerPartNumber": "N/A",
+  "Min": "N/A",
+  "Mult": "N/A",
+  "MouserPartNumber": "N/A",
   "ProductAttributes": [
     {
-      "AttributeName": "string",
-      "AttributeValue": "string"
+      "AttributeName": "N/A",
+      "AttributeValue": "N/A"
     }
   ],
   "PriceBreaks": [
     {
       "Quantity": 0,
-      "Price": "string",
-      "Currency": "string"
+      "Price": "N/A",
+      "Currency": "N/A"
     }
   ],
   "AlternatePackagings": [
     {
-      "APMfrPN": "string"
+      "APMfrPN": "N/A"
     }
   ],
-  "ProductDetailUrl": "string",
+  "ProductDetailUrl": "N/A",
   "Reeling": true,
-  "ROHSStatus": "string",
-  "SuggestedReplacement": "string",
+  "ROHSStatus": "N/A",
+  "SuggestedReplacement": "N/A",
   "MultiSimBlue": 0,
   "UnitWeightKg": {
     "UnitWeight": 0
@@ -134,24 +134,24 @@ export class PartDetail{
   "StandardCost": {
     "Standardcost": 0
   },
-  "IsDiscontinued": "string",
-  "RTM": "string",
-  "MouserProductCategory": "string",
-  "IPCCode": "string",
-  "SField": "string",
-  "VNum": "string",
-  "ActualMfrName": "string",
-  "AvailableOnOrder": "string",
+  "IsDiscontinued": "N/A",
+  "RTM": "N/A",
+  "MouserProductCategory": "N/A",
+  "IPCCode": "N/A",
+  "SField": "N/A",
+  "VNum": "N/A",
+  "ActualMfrName": "N/A",
+  "AvailableOnOrder": "N/A",
   "InfoMessages": [
-    "string"
+    "N/A"
   ],
-  "SalesMaximumOrderQty": "string",
-  "RestrictionMessage": "string",
-  "PID": "string",
+  "SalesMaximumOrderQty": "N/A",
+  "RestrictionMessage": "N/A",
+  "PID": "N/A",
   "ProductCompliance": [
     {
-      "ComplianceName": "string",
-      "ComplianceValue": "string"
+      "ComplianceName": "N/A",
+      "ComplianceValue": "N/A"
     }
   ]
   }
