@@ -8,7 +8,7 @@ import { postMouserInput } from '../variables/api.service.variables';
 import { PartinfoPage } from '../pages/partinfo/partinfo.page';
 import { TabsPage } from '../tabs/tabs.page';
 import { testnumber } from '../variables/global.html.variables';
-
+import { GlobalBrowser } from 'src/app/functions/global.browser';
 
 @Component({
   selector: 'app-tab1',
@@ -25,7 +25,8 @@ export class Tab1Page {
     private apiService: ApiService,
     private modalCtrl: ModalController,
     private other: TabsPage,
-    private partDetail: PartDetail
+    private partDetail: PartDetail,
+    private globalBrowser: GlobalBrowser
     )
   {
   }
@@ -49,14 +50,12 @@ export class Tab1Page {
   openInfoPage(value: any)
   { 
     console.log(value);
-    //enable part tab
-    //this.other.availibilityTab(false);
-    //set data
-    //update tab2
-    //switch tab
     this.partDetail.Part = value;
-    ///this.ttn = 77;
-    //this.other.tabs.select("tab2");
+  }
+
+  openURL(url: string)
+  {
+    this.globalBrowser.openURL(url);
   }
 
   async openModal()

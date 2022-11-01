@@ -77,7 +77,7 @@
       <ion-row>
         
         <div *ngIf="itemDetail.ProductDetailUrl != ''" class="ion-padding">
-          <ion-tab-button href="{{itemDetail.ProductDetailUrl}}">
+          <ion-tab-button (click)="openURL(itemDetail.ProductDetailUrl)"> <!--ion-tab-button> href="{{itemDetail.ProductDetailUrl}}"> -->
             <ion-icon name="globe"></ion-icon>
             <ion-label>
               Product page
@@ -86,7 +86,7 @@
         </div>
 
         <div *ngIf="itemDetail.DataSheetUrl != ''" class="ion-padding">
-            <ion-tab-button href="{{itemDetail.DataSheetUrl}}">
+            <ion-tab-button  (click)="openURL(itemDetail.DataSheetUrl)"> <!--href="{{itemDetail.DataSheetUrl}}"> -->
               <ion-icon name="document-outline"></ion-icon>
               <ion-label>
                 Datasheet

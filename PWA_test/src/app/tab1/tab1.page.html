@@ -14,7 +14,7 @@
 <ion-content [fullscreen]="true" >
 
   <ion-item>
-    <ion-input  clearInput value="clear me" maxlength="128" [(ngModel)]="searchInput$">
+    <ion-input  clearInput value="clear me" autofocus="true" maxlength="128" [(ngModel)]="searchInput$">
     </ion-input>
     <ion-button (click)="postMouser()" class="ion-button_cust">
       Search
@@ -85,14 +85,14 @@
                     </div>
                     
                     <div *ngIf="Item.ProductDetailUrl != ''" class="ion-padding">
-                      <ion-tab-button href="{{Item.ProductDetailUrl}}">
+                      <ion-tab-button (click)="openURL(Item.ProductDetailUrl)"> <!--href="{{Item.ProductDetailUrl}}">-->
                         <ion-icon name="globe"></ion-icon>
                         <ion-label>Product page</ion-label>
                       </ion-tab-button>
                     </div>
 
                     <div *ngIf="Item.DataSheetUrl != ''" class="ion-padding">
-                        <ion-tab-button href="{{Item.DataSheetUrl}}">
+                        <ion-tab-button (click)="openURL(Item.DataSheetUrl)"> <!--href="{{Item.DataSheetUrl}}">-->
                           <ion-icon name="document-outline"></ion-icon>
                           <ion-label>Datasheet</ion-label>
                         </ion-tab-button>
