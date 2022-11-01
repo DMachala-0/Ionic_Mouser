@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PartDetail } from 'src/app/configs/api.service.config';
+import { PartDetail} from '../../variables/partdetail.variables';
 import { GlobalBrowser } from 'src/app/functions/global.browser';
 
 @Component({

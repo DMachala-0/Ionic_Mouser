@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { postMouserResult } from '../configs/api.service.config';
+import { postMouserResult } from '../models/api.service.model';
 import {postMouserInput} from '../variables/api.service.variables'
 
 
