@@ -46,8 +46,8 @@
         </ion-col>
         <ion-col>
           <div>
-            <ion-select class="textColor"  placeholder="{{searchOptions[indexOfSelectOption]}}" slot="end" interface="popover" [(ngModel)]="selectOption"  (ionChange)="changeSelectOptions(selectOption)">
-              <ion-select-option slot="start" value="{{i}}"  *ngFor="let val of searchOptions ; let i = index">
+            <ion-select class="textColor"  placeholder="{{selectOption[indexOfSelectOption]}}" slot="end" interface="popover" [(ngModel)]="selectOptionVal"  (ionChange)="changeSelectOptions(selectOptionVal)">
+              <ion-select-option slot="start" value="{{i}}"  *ngFor="let val of selectOption ; let i = index">
                 {{val}}
               </ion-select-option>
             </ion-select>

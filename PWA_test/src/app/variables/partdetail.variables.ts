@@ -1,4 +1,6 @@
 import { Injectable } from "@angular/core"
+import { ReplaySubject } from "rxjs";
+import { StorageService } from "../services/storage/storage.service";
 
 
 @Injectable({
@@ -6,6 +8,7 @@ import { Injectable } from "@angular/core"
 })
 
 export class PartDetail{
+
 public Part =
 {
 "Availability": "N/A",
@@ -71,4 +74,24 @@ public Part =
   }
 ]
 }
+/*
+constructor(private storageService: StorageService) {
+  this.init();
+}
+
+private privateServiceSubject = new ReplaySubject<Part>(1);
+
+async init(){
+  let part = await this.storageService.getData("MouserPart");
+  if(!part)
+  {
+  this.Part = this.Part;
+  }
+  this.privateServiceSubject.next(part);
+}
+
+get part$(){
+  return this.privateServiceSubject.asObservable();
+}*/
+
 }

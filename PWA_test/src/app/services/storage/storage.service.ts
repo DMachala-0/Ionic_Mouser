@@ -13,10 +13,14 @@ export class StorageService {
    await Preferences.remove({key});
   }
 
-  async getName(key: string)
+  async getData(key: string): Promise<any>
   {
    const {value} = await Preferences.get( {key} );
-   return JSON.parse(value);
+   if(value != null)
+   {
+      return JSON.parse(value);
+   }
+
   }
 
   async setData(key:string, data: any)

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
-import { postMouserInput, searchOptions } from 'src/app/variables/api.service.variables';
+import { ModalController, SelectValueAccessor } from '@ionic/angular';
 import { PartinfoPage } from '../partinfo/partinfo.page';
+import { StorageService } from '../../services/storage/storage.service';
+import { Observable, ReplaySubject } from 'rxjs';
+import { SettingsStorageService } from 'src/app/services/storage/settings-storage.service';
 
 @Component({
   selector: 'app-settings',
@@ -12,63 +14,99 @@ import { PartinfoPage } from '../partinfo/partinfo.page';
 export class SettingsPage implements OnInit {
 
   form: FormGroup;
-  changeStartItemValue: number;
-  changeSearchCountValue: number;
-  searchOptions = searchOptions;
-  selectOption: number;
-  indexOfSelectOption = 0;
+  
+  public changeStartItemValue: number = 0;
+  public changeSearchCountValue: number = 0;
+  public searchOptions: string = "";
+  private selectOption = this.localSettingsStorage.searchOptions;
+  private selectOptionVal: number;
+  private indexOfSelectOption: number = 0;
 
-  component = PartinfoPage;
+  //component = PartinfoPage;
 
   constructor(
     private modalCtrl: ModalController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private localStorage: StorageService,
+    private localSettingsStorage: SettingsStorageService
     ) 
   {
-    
+
+    this.localSettingsStorage.getSettingsValueEnd$.subscribe(value =>
+      {
+        this.setSearchCountValue = value;
+      });
+      
+      this.localSettingsStorage.getSettingsValueStart$.subscribe(value =>
+      {
+        this.setStartItemValue = value;
+      });
+  
+      this.localSettingsStorage.getSettingsValueOption$.subscribe(value =>
+      {
+        this.setSearchOptions = value;
+      });
+    //
   }
 
-  ngOnInit() {
-    //set input
-    this.changeStartItemValue = postMouserInput.SearchByKeywordRequest.startingRecord;
-    this.changeSearchCountValue = postMouserInput.SearchByKeywordRequest.records;
+  set setStartItemValue(value:number)
+  {
+    this.changeStartItemValue = value;
+    console.log("ss:"+this.changeStartItemValue);
+  }
 
+  set setSearchCountValue(value:number)
+  {
+    this.changeSearchCountValue = value;
+    console.log("ss:"+this.changeSearchCountValue);
+  }
+
+  set setSearchOptions(value:string)
+  {
+    this.searchOptions = value;
+    this.findSearchOptionIndex();
+  }
+
+  findSearchOptionIndex()
+  {
     let tmpVar = 0;
-    searchOptions.forEach(element => {
-    if(element == postMouserInput.SearchByKeywordRequest.searchOptions)
+    this.localSettingsStorage.searchOptions.forEach(element => {
+    if(element == this.searchOptions)
       {
-        
-        console.log("index found");
-        console.log(element);
         this.indexOfSelectOption = tmpVar;
       }
       tmpVar++
     });
   }
 
+
+
+ ngOnInit(){}
+
   changeStartItem(startCount: number)
   {
-    postMouserInput.SearchByKeywordRequest.startingRecord = startCount;  
-    console.log("click");
+    //console.log("click");
     console.log(startCount);
+    this.localSettingsStorage.setSettingsValueStart(startCount);
   }
 
   changeSearchCount(searchCount: number) 
-  {
-    postMouserInput.SearchByKeywordRequest.records = searchCount;  
-    console.log("click");
-    console.log(searchCount);
+  { 
+    this.localSettingsStorage.setSettingsValueEnd(searchCount);
+
   }
 
-  changeSelectOptions(selectOption: number)
+  changeSelectOptions(sel: number)
   {
-    console.log(selectOption);
-    console.log(searchOptions[selectOption]);
-    postMouserInput.SearchByKeywordRequest.searchOptions = searchOptions[selectOption];
-    console.log(postMouserInput.SearchByKeywordRequest.searchOptions);
+    this.localSettingsStorage.setSettingsValueSelect(sel);
   }
+
+
+
   settingsClose()
   {
+    console.log(this.localSettingsStorage.postMouserInput.SearchByKeywordRequest);
+
     this.modalCtrl.dismiss();
   }
 }

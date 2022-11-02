@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { postMouserResult } from '../models/api.service.model';
-import {postMouserInput} from '../variables/api.service.variables'
+import { postMouserResult } from '../../models/api.service.model';
+import { SettingsStorageService } from '../storage/settings-storage.service';
+
+//import {postMouserInput} from '../variables/api.service.variables'
 
 
 @Injectable({
@@ -12,7 +14,9 @@ import {postMouserInput} from '../variables/api.service.variables'
 
 export class ApiService {
 
-  constructor(private http: HttpClient) { 
+  constructor(
+    private http: HttpClient,
+    private localSettingStorage: SettingsStorageService) { 
   }
 
   postKeywordMouser() : Observable<postMouserResult>
@@ -24,6 +28,6 @@ export class ApiService {
                 environment.api.keyUrl +
                 environment.api.key;
                 
-    return this.http.post<postMouserResult>(url,postMouserInput);
+    return this.http.post<postMouserResult>(url,this.localSettingStorage.postMouserInput); //mouserinput
   }
 }
