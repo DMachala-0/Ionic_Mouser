@@ -36,9 +36,9 @@ export class SettingsStorageService {
   private privateServiceSubjectSelect = new ReplaySubject<string>(1);
 
   async initSettings(start: number, end: number, select: number) {
-    this.setSettingsValueStart(start);
-    this.setSettingsValueEnd(end);
-    this.setSettingsValueSelect(select);
+    //this.setSettingsValueStart(start);
+    //this.setSettingsValueEnd(end);
+   // this.setSettingsValueSelect(select);
     let value = await this.localStorage.getData("MouserSettingsValueStart");
     if (!value) {
       value = this.postMouserInput.SearchByKeywordRequest.startingRecord;
