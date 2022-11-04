@@ -28,7 +28,7 @@
       <ion-label *ngIf="postMouserResult.SearchResults == null" position="stacked">
         Please insert name of part to seach
       </ion-label>
-      <ion-label *ngIf="postMouserResult.SearchResults.Parts.length == 0" position="stacked">
+      <ion-label *ngIf="postMouserResult.SearchResults.Parts.length < 1" position="stacked">
         Found none
       </ion-label>
     </ion-item>

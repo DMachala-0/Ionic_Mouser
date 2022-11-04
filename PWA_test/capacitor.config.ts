@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'PWA_test',
+  appName: 'Ionic_Mouser',
   webDir: 'www',
   bundledWebRuntime: false
 };

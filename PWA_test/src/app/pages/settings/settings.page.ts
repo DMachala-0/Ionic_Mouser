@@ -18,9 +18,9 @@ export class SettingsPage implements OnInit {
   public changeStartItemValue: number = 0;
   public changeSearchCountValue: number = 0;
   public searchOptions: string = "";
-  private selectOption = this.localSettingsStorage.searchOptions;
-  private selectOptionVal: number;
-  private indexOfSelectOption: number = 0;
+  public selectOption = this.localSettingsStorage.searchOptions;
+  public selectOptionVal: number;
+  public indexOfSelectOption: number = 0;
 
   //component = PartinfoPage;
 

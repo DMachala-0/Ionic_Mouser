@@ -3,12 +3,12 @@ export interface postMouserResult
     "Errors": [
       {
         "Id": 0,
-        "Code": "string",
-        "Message": "string",
-        "ResourceKey": "string",
-        "ResourceFormatString": "string",
-        "ResourceFormatString2": "string",
-        "PropertyName": "string"
+        "Code": "",
+        "Message": "",
+        "ResourceKey": "",
+        "ResourceFormatString": "",
+        "ResourceFormatString2": "",
+        "PropertyName": ""
       }
     ],
     "SearchResults": {
@@ -16,7 +16,7 @@ export interface postMouserResult
       "Parts": [
         {
           "Availability": "string",
-          "DataSheetUrl": "string",
+          "DataSheetUrl": "",
           "Description": "string",
           "FactoryStock": "string",
           "ImagePath": "string",
@@ -46,7 +46,7 @@ export interface postMouserResult
               "APMfrPN": "string"
             }
           ],
-          "ProductDetailUrl": "string",
+          "ProductDetailUrl": "",
           "Reeling": true,
           "ROHSStatus": "string",
           "SuggestedReplacement": "string",
