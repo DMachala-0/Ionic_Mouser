@@ -21,6 +21,7 @@ import { MainPageStorageService } from '../services/storage/main-page-storage.se
 export class Tab1Page {
   postMouserResult$: postMouserResult/// Observable<postMouserResult>;
   searchInput$: string;
+  noinput: boolean;
   ttn = testnumber;
   component = PartinfoPage;
 
@@ -37,13 +38,16 @@ export class Tab1Page {
 
   {
     //load last save
-
+    this.noinput = false;
     //this.localMainPageStorage.initMainPage();
 
     //this.postMouserResult$ = this.localMainPageStorage.getMainPageResult$;
     this.localMainPageStorage.getMainPageResult$.subscribe(value =>
       {
-        this.postMouserResult$ = value;
+        if(value.SearchResults != null)
+        {
+          this.postMouserResult$ = value;
+        }
       });
 
       this.localMainPageStorage.getMainPageUrl$.subscribe(value =>
@@ -68,6 +72,11 @@ export class Tab1Page {
     console.log(this.searchInput$);
   }
 
+  returnNoInput(): boolean
+  {
+    return this.noinput;
+  }
+
   async postMouser() {
     this.localSettingsStorage.postMouserInput.SearchByKeywordRequest.keyword = this.searchInput$ ?? 'IC';//this.todo.value;
     //this.postMouserResult$ = await this.apiService.postKeywordMouser();
@@ -76,11 +85,26 @@ export class Tab1Page {
     (
       value =>
       {
-        this.postMouserResult$ = value;
-        this.localMainPageStorage.setMainPageResult(value);
+        if(value.SearchResults != null)
+        {
+          console.log("val");
+          this.noinput = false;
+          this.postMouserResult$ = value;
+          this.localMainPageStorage.setMainPageResult(value);
+        }
+        else
+        {
+          console.log("noval");
+          this.noinput = true;
+        }
+        console.log(this.noinput);
       }
     );
-    this.localMainPageStorage.setMainPageUrl(this.searchInput$);
+    if(this.searchInput$ != null)
+    {
+      this.localMainPageStorage.setMainPageUrl(this.searchInput$);
+    }
+    console.log(this.postMouserResult$);
   }
 
 

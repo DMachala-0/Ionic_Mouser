@@ -24,13 +24,14 @@ export class MainPageStorageService {
       
       let value = await this.localStorage.getData("MouserDataResult");
       if (!value) {
+        console.log("NULL ");
         value = "help";
       }
       this.privateMainPageResult.next(value);
     
       value = await this.localStorage.getData("MouserDataUrl");
       if (!value) {
-        value = "test";
+        value = "";
       }
       this.privateMainPageUrl.next(value);
 
