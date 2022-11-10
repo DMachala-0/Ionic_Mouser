@@ -14,11 +14,13 @@
 <ion-content [fullscreen]="true" >
 
   <ion-item>
-    <ion-input  clearInput value="clear me" autofocus="true" maxlength="128" [(ngModel)]="searchInput$">
+    
+    <ion-searchbar (ionChange)="postMouser()" [debounce]="1000" clearInput value="clear me" show-cancel-button="focus" placeholder="Show on Focus" [(ngModel)]="searchInput$" maxlength="128"></ion-searchbar>
+    <!--<ion-input  clearInput value="clear me" autofocus="true" maxlength="128" [(ngModel)]="searchInput$">
     </ion-input>
     <ion-button (click)="postMouser()" class="ion-button_cust">
       Search
-    </ion-button>
+    </ion-button>-->
   </ion-item>
 
   <ion-list class="ion-no-padding" *ngIf="postMouserResult$ let postMouserResult" color="medium" mode="ios">
