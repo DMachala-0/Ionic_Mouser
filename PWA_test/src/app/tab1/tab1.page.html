@@ -15,7 +15,7 @@
 
   <ion-item>
     
-    <ion-searchbar (ionChange)="postMouser()" [debounce]="1000" clearInput value="clear me" show-cancel-button="focus" placeholder="Show on Focus" [(ngModel)]="searchInput$" maxlength="128"></ion-searchbar>
+    <ion-searchbar (ionChange)="postMouser()" [debounce]="1000" clearInput value="clear me" show-cancel-button="focus" placeholder="Insert text here for search" [(ngModel)]="searchInput$" maxlength="128"></ion-searchbar>
     <!--<ion-input  clearInput value="clear me" autofocus="true" maxlength="128" [(ngModel)]="searchInput$">
     </ion-input>
     <ion-button (click)="postMouser()" class="ion-button_cust">
@@ -35,13 +35,13 @@
       </ion-label>
     </ion-item>
 
-    <ion-list class="ion-no-padding" *ngIf="postMouserResult.SearchResults !=null">
+    <ion-list class="ion-no-padding ion-item-cust" *ngIf="postMouserResult.SearchResults !=null">
       
-      <ion-item-group class="ion-no-padding"  *ngFor="let Item of postMouserResult.SearchResults.Parts ; let i = index">
-        <ion-item lines="none">
+      <ion-item-group class="ion-no-padding ion-item-cust"  *ngFor="let Item of postMouserResult.SearchResults.Parts ; let i = index">
+        <ion-item lines="none" class="ion-item-cust">
           <ion-accordion-group expand="inset" lines="none" class="ion-no-padding" [animated]="false" >
             
-            <ion-accordion value="first" class="ion-no-padding" detail='false' toggleIconSlot="start">
+            <ion-accordion value="first" class="ion-no-padding ion-item-cust" detail='false' toggleIconSlot="start">
                 <ion-item-group slot="header"  >
                   <ion-item class=" ion-accordion-resize" color="default">
                       <ion-thumbnail slot="start" class="ion-no-padding">
