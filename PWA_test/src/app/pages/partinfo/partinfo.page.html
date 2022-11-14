@@ -7,11 +7,11 @@
     <ion-title>
       <ion-item-group>
         <ion-item lines="none" >
-          <ion-thumbnail >
+          <ion-thumbnail class="textCustPaddingLeftNone">
             <img *ngIf="itemDetail.ImagePath != null"  src="{{itemDetail.ImagePath}}" alt=''>
             <img *ngIf="itemDetail.ImagePath == null"  src="assets/img/no-image.webp" alt=''>
           </ion-thumbnail>
-          <ion-label class="ion-padding">
+          <ion-label class="ion-padding textCustSizeHeader2">
             {{itemDetail.ManufacturerPartNumber}}
           </ion-label>
         </ion-item>
@@ -24,45 +24,45 @@
   <ion-grid>
     <ion-col>
       
-      <ion-row class="ion-padding">
+      <ion-row class="ion-padding textCustSizeHeader1">
         <ion-label>
           Description: {{itemDetail.Description}}
         </ion-label>
       </ion-row>
 
-      <ion-row class="ion-padding">
+      <ion-row class="ion-padding textCustSizeHeader1">
         <ion-label>
           Category: {{itemDetail.Category}}
         </ion-label>
       </ion-row>
 
-      <ion-row class="ion-padding">
+      <ion-row class="ion-padding textCustSizeHeader1">
         <ion-label>
           Manufacturer Name: {{itemDetail.Manufacturer}}
         </ion-label>
       </ion-row>
 
-      <ion-row class="ion-padding">
+      <ion-row class="ion-padding textCustSizeHeader1">
         <ion-label>
           Manufacturer part number: {{itemDetail.ManufacturerPartNumber}}
         </ion-label>
       </ion-row>
     
-      <ion-row class="ion-padding">
+      <ion-row class="ion-padding textCustSizeHeader1">
         <ion-label>
           Mouser part number: {{itemDetail.MouserPartNumber}}
         </ion-label>
       </ion-row>
 
-      <ion-row class="ion-padding">
+      <ion-row class="ion-padding ">
         <ion-grid>
           <ion-row>
-            <ion-label>
+            <ion-label class="textCustSizeHeader1">
               Availability: {{itemDetail.Availability}}
             </ion-label>
           </ion-row>
           <ion-row >
-            <ion-label>
+            <ion-label class="textCustSizeHeader1">
               Lead time: {{itemDetail.LeadTime}}
             </ion-label>
           </ion-row>
@@ -77,7 +77,7 @@
         <div *ngIf="itemDetail.ProductDetailUrl != ''" class="ion-padding">
           <ion-tab-button (click)="openURL(itemDetail.ProductDetailUrl)"> <!--ion-tab-button> href="{{itemDetail.ProductDetailUrl}}"> -->
             <ion-icon name="globe"></ion-icon>
-            <ion-label>
+            <ion-label >
               Product page
             </ion-label>
           </ion-tab-button>
@@ -97,18 +97,22 @@
     <ion-col>
       <div class="ion-padding" *ngIf="itemDetail.PriceBreaks.length > 0">
         <ion-list-header >
-          <ion-label>
+          <ion-label class="textCustSizeHeader2">
             Price breaks
           </ion-label>
         </ion-list-header>
-
-        <ion-list *ngFor="let Price of itemDetail.PriceBreaks ; let i = index" lines="none" >
-          <ion-item>
-            <ion-label >
-              Price: {{Price.Price}} for {{Price.Quantity}} ks
-            </ion-label>
-          </ion-item>
-        </ion-list>
+        <ion-grid class="ion-no-padding">
+          <ion-list *ngFor="let Price of itemDetail.PriceBreaks ; let i = index" lines="none" >
+            <ion-row>
+              <ion-item>
+                <ion-label class="textCustSizeHeader1">
+                  Price: {{Price.Price}} for {{Price.Quantity}} ks
+                </ion-label>
+              </ion-item>
+            </ion-row>
+          </ion-list>
+        </ion-grid>
+        
       </div>
     </ion-col>
 

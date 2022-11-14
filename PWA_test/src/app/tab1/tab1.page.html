@@ -13,9 +13,11 @@
 
 <ion-content [fullscreen]="true" >
 
-  <ion-item>
+  <ion-item lines="none">
     
-    <ion-searchbar (ionChange)="postMouser()" [debounce]="1000" clearInput value="clear me" show-cancel-button="focus" placeholder="Insert text here for search" [(ngModel)]="searchInput$" maxlength="128"></ion-searchbar>
+    <ion-searchbar class="searchBarCustom" (ionChange)="postMouser()" [debounce]="1000" clearInput value="clear me" show-cancel-button="focus" placeholder="Insert text here for search" [(ngModel)]="searchInput$" maxlength="128">
+
+    </ion-searchbar>
     <!--<ion-input  clearInput value="clear me" autofocus="true" maxlength="128" [(ngModel)]="searchInput$">
     </ion-input>
     <ion-button (click)="postMouser()" class="ion-button_cust">
@@ -27,10 +29,10 @@
     
     <ion-item lines="none" >
       <!--<ion-label *ngIf="postMouserResult.SearchResults != null" position="stacked">Found:</ion-label>-->
-      <ion-label *ngIf="returnNoInput() == true" position="stacked">
+      <ion-label class="textCustSize" color="danger" *ngIf="returnNoInput() == true" position="stacked">
         Please insert name of part to seach
       </ion-label>
-      <ion-label *ngIf="postMouserResult.SearchResults.Parts.length < 1 && returnNoInput() == false" position="stacked">
+      <ion-label class="textCustSize" color="danger" *ngIf="postMouserResult.SearchResults.Parts.length < 1 && returnNoInput() == false" position="stacked">
         Found none
       </ion-label>
     </ion-item>
@@ -49,7 +51,7 @@
                         <img *ngIf="Item.ImagePath == null"  src="assets/img/no-image.webp" alt=''>
                       </ion-thumbnail>
                       
-                      <ion-label *ngIf="Item!=null" class="ion-text-wrap">
+                      <ion-label *ngIf="Item!=null" class="ion-text-wrap" class="textCustSizeHeader1">
                         {{Item.ManufacturerPartNumber}}
                       </ion-label>
                   </ion-item>
@@ -57,14 +59,15 @@
               <div slot="content" color="medium">
                 <ion-grid >
                   <ion-col  class="ion-align-items-center">
+                    <!--
                     <div class="ion-padding " >
-                      <ion-label color="dark ion-text-wrap">
+                      <ion-label color="dark ion-text-wrap" class="textCustSize">
                         {{Item.Category}}
                       </ion-label>
                     </div>
-
+                    -->
                     <div class="ion-padding" >
-                      <ion-label class="ion-text-wrap" >
+                      <ion-label class="ion-text-wrap" class="textCustSize">
                         {{Item.Description}}
                       </ion-label>
                     </div>
@@ -72,7 +75,7 @@
                   </ion-col>
                   <ion-row  class="ion-align-items-center">
                     <div class="ion-padding">
-                      <ion-label class="ion-text-wrap">
+                      <ion-label class="ion-text-wrap" class="textCustSize">
                         {{Item.Availability}}
                       </ion-label>
                     </div>
@@ -96,7 +99,9 @@
                     <div *ngIf="Item.DataSheetUrl != ''" class="ion-padding">
                         <ion-tab-button (click)="openURL(Item.DataSheetUrl)"> <!--href="{{Item.DataSheetUrl}}">-->
                           <ion-icon name="document-outline"></ion-icon>
-                          <ion-label>Datasheet</ion-label>
+                          <ion-label>
+                            Datasheet
+                          </ion-label>
                         </ion-tab-button>
                     </div>
                   </ion-row>
@@ -104,26 +109,32 @@
 
                   <ion-col *ngIf="Item.RestrictionMessage != null ">
                     <div class="ion-padding">
-                      <ion-label class=" ion-text-wrap">
+                      <ion-label class=" ion-text-wrap textCustSize" color="danger">
                         {{Item.RestrictionMessage}}
                       </ion-label>
                     </div>
                   </ion-col>
-                </ion-grid>
+                
 
-                <div class="ion-padding" *ngIf="Item.PriceBreaks.length > 0 ">
-                  <ion-list-header >
-                    <ion-label>Price breaks</ion-label>
-                  </ion-list-header>
-
-                  <ion-list *ngFor="let Price of Item.PriceBreaks ; let i = index" lines="none" >
-                    <ion-item>
-                      <ion-label >
-                        Price: {{Price.Price}} for {{Price.Quantity}} ks
+                  <ion-col class="ion-padding .ion-item-cust" *ngIf="Item.PriceBreaks.length > 0 ">
+                    <ion-list-header >
+                      <ion-label class="textCustSizeHeader1">
+                        Price breaks
                       </ion-label>
-                    </ion-item>
-                  </ion-list>
-                </div>
+                    </ion-list-header>
+                    <ion-grid>
+                      <ion-list *ngFor="let Price of Item.PriceBreaks ; let i = index" lines="none" >
+                        <ion-row>
+                          <ion-item>
+                            <ion-label class="textCustSize">
+                              Price: {{Price.Price}} for {{Price.Quantity}} ks
+                            </ion-label>
+                          </ion-item>
+                        </ion-row>
+                      </ion-list>
+                    </ion-grid>
+                  </ion-col>
+                </ion-grid>
               </div>
             </ion-accordion>
           </ion-accordion-group>
