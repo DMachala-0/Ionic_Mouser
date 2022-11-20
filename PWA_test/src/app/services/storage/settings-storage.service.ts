@@ -77,7 +77,7 @@ export class SettingsStorageService {
   }
 
   setSettingsValueSelect(value: number) {
-    this.localStorage.setData("MouserSettingsValueSelect", value);
+    this.localStorage.setData("MouserSettingsValueSelect", this.searchOptions[value]);
     this.postMouserInput.SearchByKeywordRequest.searchOptions = this.searchOptions[value];
     this.privateServiceSubjectSelect.next(this.searchOptions[value]);
   }

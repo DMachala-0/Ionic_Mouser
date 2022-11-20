@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonTabs, ModalController, NavController } from '@ionic/angular';
+import { Component, Injectable, ViewChild } from '@angular/core';
+import { IonTabs, ModalController, NavController} from '@ionic/angular';
 import { identity, Observable, Subject } from 'rxjs';
 import { SettingsPage } from '../pages/settings/settings.page';
 import { ApiService } from '../services/api/api.service';
@@ -18,6 +18,11 @@ import { MainPageStorageService } from '../services/storage/main-page-storage.se
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
+
+@Injectable({
+  providedIn: 'root'
+})
+
 export class Tab1Page {
   postMouserResult$: postMouserResult/// Observable<postMouserResult>;
   searchInput$: string;
@@ -33,7 +38,7 @@ export class Tab1Page {
     private partDetail: PartDetail,
     private globalBrowser: GlobalBrowser,
     private localSettingsStorage: SettingsStorageService,
-    private localMainPageStorage: MainPageStorageService
+    private localMainPageStorage: MainPageStorageService,
   ) 
 
   {

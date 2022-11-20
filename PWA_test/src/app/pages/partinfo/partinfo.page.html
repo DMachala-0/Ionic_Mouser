@@ -95,20 +95,18 @@
     </ion-col>
 
     <ion-col>
-      <div class="ion-padding" *ngIf="itemDetail.PriceBreaks.length > 0">
+      <div class="ion-no-padding" *ngIf="itemDetail.PriceBreaks.length > 0">
         <ion-list-header >
           <ion-label class="textCustSizeHeader1">
             Price breaks
           </ion-label>
         </ion-list-header>
         <ion-grid class="ion-no-padding">
-          <ion-list *ngFor="let Price of itemDetail.PriceBreaks ; let i = index" lines="none"  class="textpricesPadding">
+          <ion-list *ngFor="let Price of itemDetail.PriceBreaks ; let i = index" lines="none" >
             <ion-row >
-              <ion-item >
                 <ion-label class="textCustSize textpricesPadding">
                   Price: {{Price.Price}} for {{Price.Quantity}} ks
                 </ion-label>
-              </ion-item>
             </ion-row>
           </ion-list>
         </ion-grid>

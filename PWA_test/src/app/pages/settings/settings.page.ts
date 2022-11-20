@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ModalController, SelectValueAccessor } from '@ionic/angular';
-import { PartinfoPage } from '../partinfo/partinfo.page';
-import { StorageService } from '../../services/storage/storage.service';
-import { Observable, ReplaySubject } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { ModalController} from '@ionic/angular';
 import { SettingsStorageService } from 'src/app/services/storage/settings-storage.service';
+import { ApiService } from 'src/app/services/api/api.service';
+import { Tab1Page } from 'src/app/tab1/tab1.page';
 
 @Component({
   selector: 'app-settings',
@@ -26,25 +25,28 @@ export class SettingsPage implements OnInit {
 
   constructor(
     private modalCtrl: ModalController,
-    private formBuilder: FormBuilder,
-    private localStorage: StorageService,
-    private localSettingsStorage: SettingsStorageService
+    private localSettingsStorage: SettingsStorageService,
+    private apiService: ApiService,
+    private tab1: Tab1Page
     ) 
   {
 
     this.localSettingsStorage.getSettingsValueEnd$.subscribe(value =>
       {
         this.setSearchCountValue = value;
+        console.log("setSearchCountValue:" + value);
       });
       
       this.localSettingsStorage.getSettingsValueStart$.subscribe(value =>
       {
         this.setStartItemValue = value;
+        console.log("setStartItemValue:" + value);
       });
   
       this.localSettingsStorage.getSettingsValueOption$.subscribe(value =>
       {
         this.setSearchOptions = value;
+        console.log("setSearchOptions:" + value);
       });
     //
   }
@@ -64,16 +66,22 @@ export class SettingsPage implements OnInit {
   set setSearchOptions(value:string)
   {
     this.searchOptions = value;
+    console.log("setter Search options");
     this.findSearchOptionIndex();
   }
 
   findSearchOptionIndex()
   {
     let tmpVar = 0;
+    console.log("findSearchOptionIndex");
+    console.log("Search Options:" + this.searchOptions);
     this.localSettingsStorage.searchOptions.forEach(element => {
+      console.log("element:"+element);
+      
     if(element == this.searchOptions)
       {
         this.indexOfSelectOption = tmpVar;
+        console.log("found:" + this.indexOfSelectOption);
       }
       tmpVar++
     });
@@ -106,7 +114,7 @@ export class SettingsPage implements OnInit {
   settingsClose()
   {
     console.log(this.localSettingsStorage.postMouserInput.SearchByKeywordRequest);
-
+    this.tab1.postMouser();
     this.modalCtrl.dismiss();
   }
 }

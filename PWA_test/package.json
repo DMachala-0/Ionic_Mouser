@@ -1,5 +1,5 @@
 {
-  "name": "PWA_test",
+  "name": "Ionic Mouser",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "resources": "capacitor-resources -p android"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +31,7 @@
     "@capacitor/splash-screen": "^4.1.1",
     "@capacitor/status-bar": "4.0.1",
     "@ionic/angular": "^6.1.9",
+    "capacitor-resources": "^2.0.5",
     "ionicons": "^6.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
