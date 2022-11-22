@@ -83,7 +83,7 @@ export class Tab1Page {
   }
 
   async postMouser() {
-    this.localSettingsStorage.postMouserInput.SearchByKeywordRequest.keyword = this.searchInput$ ?? 'IC';//this.todo.value;
+    this.localSettingsStorage.postMouserInput.SearchByKeywordRequest.keyword = this.searchInput$ ?? 'IC';
     //this.postMouserResult$ = await this.apiService.postKeywordMouser();
 
     await this.apiService.postKeywordMouser().subscribe
@@ -134,6 +134,15 @@ export class Tab1Page {
       }
     );
     await modal.present();
+
+    const { data } = await modal.onWillDismiss();
+    if(data.dismissed == true)
+    {
+      console.log("MODAL DISSMISSED");
+      this.postMouser();
+    }
+
+
   }
 
 }

@@ -82,6 +82,7 @@ export class SettingsPage implements OnInit {
       {
         this.indexOfSelectOption = tmpVar;
         console.log("found:" + this.indexOfSelectOption);
+        this.localSettingsStorage.postMouserInput.SearchByKeywordRequest.searchOptions = element;
       }
       tmpVar++
     });
@@ -113,8 +114,11 @@ export class SettingsPage implements OnInit {
 
   settingsClose()
   {
+    //console.log("output");
     console.log(this.localSettingsStorage.postMouserInput.SearchByKeywordRequest);
-    this.tab1.postMouser();
-    this.modalCtrl.dismiss();
+    //this.tab1.postMouser();
+    this.modalCtrl.dismiss({
+      'dismissed': true
+    });
   }
 }
