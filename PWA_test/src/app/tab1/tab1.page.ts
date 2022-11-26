@@ -29,6 +29,7 @@ export class Tab1Page {
   noinput: boolean;
   ttn = testnumber;
   component = PartinfoPage;
+  mouserPostComplete: boolean; 
 
   subject = new Subject();
 
@@ -44,6 +45,7 @@ export class Tab1Page {
   {
     //load last save
     this.noinput = false;
+    this.mouserPostComplete = true;
     //this.localMainPageStorage.initMainPage();
 
     //this.postMouserResult$ = this.localMainPageStorage.getMainPageResult$;
@@ -83,6 +85,7 @@ export class Tab1Page {
   }
 
   async postMouser() {
+    this.mouserPostComplete = false;
     this.localSettingsStorage.postMouserInput.SearchByKeywordRequest.keyword = this.searchInput$ ?? 'IC';
     //this.postMouserResult$ = await this.apiService.postKeywordMouser();
 
@@ -102,6 +105,7 @@ export class Tab1Page {
           console.log("noval");
           this.noinput = true;
         }
+        this.mouserPostComplete = true;
         console.log(this.noinput);
       }
     );
@@ -135,12 +139,21 @@ export class Tab1Page {
     );
     await modal.present();
 
-    const { data } = await modal.onWillDismiss();
-    if(data.dismissed == true)
+    //wait for closing
+    await modal.onDidDismiss()
+    //console.log("dismiss:" + data);
+    //console.log(data);
+    console.log("XXXXXXXXXXXXXXXXXXXXXXXX");
+    console.log(this.localSettingsStorage.postMouserInput.SearchByKeywordRequest);
+    this.postMouser();
+    
+   
+   /* if(datae.dismissed == tru)
     {
       console.log("MODAL DISSMISSED");
       this.postMouser();
     }
+    */
 
 
   }
