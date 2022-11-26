@@ -140,7 +140,7 @@ export class Tab1Page {
     await modal.present();
 
     //wait for closing
-    await modal.onDidDismiss()
+    await modal.onDidDismiss();
     //console.log("dismiss:" + data);
     //console.log(data);
     console.log("XXXXXXXXXXXXXXXXXXXXXXXX");
