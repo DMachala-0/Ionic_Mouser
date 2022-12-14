@@ -24,31 +24,31 @@
   <ion-grid>
     <ion-col>
       
-      <ion-row class="ion-padding textCustSize">
+      <ion-row class="ion-padding textCustSize ion-text-wrap">
         <ion-label>
           Description: {{itemDetail.Description}}
         </ion-label>
       </ion-row>
 
-      <ion-row class="ion-padding textCustSize">
+      <ion-row class="ion-padding textCustSize ion-text-wrap">
         <ion-label>
           Category: {{itemDetail.Category}}
         </ion-label>
       </ion-row>
 
-      <ion-row class="ion-padding textCustSize">
+      <ion-row class="ion-padding textCustSize ion-text-wrap">
         <ion-label>
           Manufacturer Name: {{itemDetail.Manufacturer}}
         </ion-label>
       </ion-row>
 
-      <ion-row class="ion-padding textCustSize">
+      <ion-row class="ion-padding textCustSize ion-text-wrap">
         <ion-label>
           Manufacturer part number: {{itemDetail.ManufacturerPartNumber}}
         </ion-label>
       </ion-row>
     
-      <ion-row class="ion-padding textCustSize">
+      <ion-row class="ion-padding textCustSize ion-text-wrap">
         <ion-label>
           Mouser part number: {{itemDetail.MouserPartNumber}}
         </ion-label>
@@ -57,12 +57,12 @@
       <ion-row class="ion-padding ">
         <ion-grid>
           <ion-row>
-            <ion-label class="textCustSize">
+            <ion-label class="textCustSize ion-text-wrap">
               Availability: {{itemDetail.Availability}}
             </ion-label>
           </ion-row>
           <ion-row >
-            <ion-label class="textCustSize">
+            <ion-label class="textCustSize ion-text-wrap">
               Lead time: {{itemDetail.LeadTime}}
             </ion-label>
           </ion-row>
@@ -97,14 +97,14 @@
     <ion-col>
       <div class="ion-no-padding" *ngIf="itemDetail.PriceBreaks.length > 0">
         <ion-list-header >
-          <ion-label class="textCustSizeHeader1">
+          <ion-label class="textCustSizeHeader1 ion-text-wrap">
             Price breaks
           </ion-label>
         </ion-list-header>
         <ion-grid class="ion-no-padding">
           <ion-list *ngFor="let Price of itemDetail.PriceBreaks ; let i = index" lines="none" >
             <ion-row >
-                <ion-label class="textCustSize textpricesPadding">
+                <ion-label class="textCustSize textpricesPadding ion-text-wrap">
                   Price: {{Price.Price}} for {{Price.Quantity}} ks
                 </ion-label>
             </ion-row>

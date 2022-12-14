@@ -73,7 +73,7 @@
                     </div>
                     -->
                     <div class="ion-padding" >
-                      <ion-label class="ion-text-wrap" class="textCustSize">
+                      <ion-label class="ion-text-wrap textCustSize" >
                         {{Item.Description}}
                       </ion-label>
                     </div>
@@ -124,7 +124,7 @@
 
                   <ion-col class="ion-padding .ion-item-cust" *ngIf="Item.PriceBreaks.length > 0 ">
                     <ion-list-header >
-                      <ion-label class="textCustSizeHeader1">
+                      <ion-label class="textCustSizeHeader1 ion-text-wrap ">
                         Price breaks
                       </ion-label>
                     </ion-list-header>
@@ -132,7 +132,7 @@
                       <ion-list *ngFor="let Price of Item.PriceBreaks ; let i = index" lines="none" >
                         <ion-row>
                           <ion-item>
-                            <ion-label class="textCustSize">
+                            <ion-label class="textCustSize ion-text-wrap ">
                               Price: {{Price.Price}} for {{Price.Quantity}} ks
                             </ion-label>
                           </ion-item>
